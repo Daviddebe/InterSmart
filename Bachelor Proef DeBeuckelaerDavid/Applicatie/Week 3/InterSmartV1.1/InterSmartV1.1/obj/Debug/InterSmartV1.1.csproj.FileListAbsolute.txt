@@ -1,0 +1,53 @@
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\bin\Debug\InterSmartV1.1.exe.config
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\bin\Debug\InterSmartV1.1.exe
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\bin\Debug\InterSmartV1.1.pdb
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.csprojResolveAssemblyReference.cache
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\obj\Debug\MainWindow.baml
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\MainPage.baml
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\Statistieken.baml
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\obj\Debug\MainWindow.g.cs
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\MainPage.g.cs
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\Statistieken.g.cs
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\obj\Debug\App.g.cs
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1_MarkupCompile.cache
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.g.resources
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1._1.Properties.Resources.resources
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.csproj.GenerateResource.Cache
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.exe
+C:\Users\David\Desktop\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.pdb
+D:\school\InterSmartV1.1\InterSmartV1.1\bin\Debug\InterSmartV1.1.exe.config
+D:\school\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.exe
+D:\school\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.pdb
+D:\school\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.csprojResolveAssemblyReference.cache
+D:\school\InterSmartV1.1\InterSmartV1.1\obj\Debug\MainWindow.baml
+D:\school\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\MainPage.baml
+D:\school\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\Statistieken.baml
+D:\school\InterSmartV1.1\InterSmartV1.1\obj\Debug\MainWindow.g.cs
+D:\school\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\MainPage.g.cs
+D:\school\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\Statistieken.g.cs
+D:\school\InterSmartV1.1\InterSmartV1.1\obj\Debug\App.g.cs
+D:\school\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1_MarkupCompile.cache
+D:\school\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.g.resources
+D:\school\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1._1.Properties.Resources.resources
+D:\school\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.csproj.GenerateResource.Cache
+D:\school\InterSmartV1.1\InterSmartV1.1\bin\Debug\InterSmartV1.1.exe
+D:\school\InterSmartV1.1\InterSmartV1.1\bin\Debug\InterSmartV1.1.pdb
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\bin\Debug\InterSmartV1.1.exe.config
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.exe
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.pdb
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\bin\Debug\InterSmartV1.1.exe
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\bin\Debug\InterSmartV1.1.pdb
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.csprojResolveAssemblyReference.cache
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\MainWindow.baml
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\MainPage.baml
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\Statistieken.baml
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\MainWindow.g.cs
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\MainPage.g.cs
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\Statistieken.g.cs
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\App.g.cs
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1_MarkupCompile.cache
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.g.resources
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1._1.Properties.Resources.resources
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.csproj.GenerateResource.Cache
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\Options.baml
+C:\Users\David\Desktop\BachelorProef\Versie's\Intersmart Stats\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\Options.g.cs

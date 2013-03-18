@@ -1,0 +1,48 @@
+﻿<Window x:Class="InterSmartV1._1.Menu.Statistieken"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Statistieken" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="BtnShowStats" Content="Show Statistieken" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="1" Click="BtnShowStats_Click"></Button>
+        <Button x:Name="BtnExport" Content="Export to txt" Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="1" Click="BtnExport_Click"></Button>
+
+        <Button x:Name="BtnBack" Content="Close" Grid.Column="15" Grid.Row="1" Grid.ColumnSpan="2" Click="BtnBack_Click" Grid.RowSpan="1"  Width="57"/>
+        <ListBox x:Name="lstbxStats" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="16" Grid.RowSpan="8">
+           
+        </ListBox>
+    </Grid>
+</Window>
