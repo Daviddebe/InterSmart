@@ -33,7 +33,7 @@ namespace InterSmartV1._1.Menu
         public List<int> AnswerList = new List<int>();
         DispatcherTimer timer = new DispatcherTimer();
         private int count = 0;
-     
+        int var = -1; //voor popup
         
 
         public MainPage()
@@ -45,8 +45,10 @@ namespace InterSmartV1._1.Menu
 
         public void GetTweets_Click(object sender, RoutedEventArgs e)//timer gebruikt zodat er automatich word ververst.
         {
+
             timer.Tick += timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 1);
+
 
             if (TextTweet.Text == "" || txbxQuestionTweet.Text == "")
             {
@@ -78,7 +80,13 @@ namespace InterSmartV1._1.Menu
                 //}
                 TweetVragen = txbxQuestionTweet.Text;
                 _Vragen = tweet.returnVragen(TweetVragen);
-                this._Vragen.CollectionChanged += _Vragen_CollectionChanged;
+               
+                if (var != VraagList.Items.Count && VraagList.Items.Count != 0) //voor tweet pop-up te laten zien als lijst word upgedate
+                {
+                    QuestionPopUp popUp = new QuestionPopUp();
+                    popUp.Show();
+                    var = VraagList.Items.Count;
+                }
             }
             else
             {
@@ -91,11 +99,9 @@ namespace InterSmartV1._1.Menu
             count++;
         }
 
-        void _Vragen_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            QuestionPopUp popUp = new QuestionPopUp();
-            popUp.Show();
-        }
+       
+
+       
 
         private void BtnClear_Click(object sender, RoutedEventArgs e) //alles clearen
         {

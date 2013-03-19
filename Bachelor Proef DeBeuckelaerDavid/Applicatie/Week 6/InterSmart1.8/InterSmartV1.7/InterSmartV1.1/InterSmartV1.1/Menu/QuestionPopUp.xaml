@@ -7,7 +7,7 @@
 
         <!-- Notification area -->
         <Border BorderThickness="1" Background="LightBlue" BorderBrush="Black" CornerRadius="10">
-            <TextBlock x:Name="txtPop" Margin="54,30,-54,-30">Drolly</TextBlock>
+            <TextBlock x:Name="txtPop" Margin="54,30,-54,-30"><Run Language="nl-be" Text="Er is een vraag"/></TextBlock>
         </Border>
         <!-- Animation -->
         <Grid.Triggers>
