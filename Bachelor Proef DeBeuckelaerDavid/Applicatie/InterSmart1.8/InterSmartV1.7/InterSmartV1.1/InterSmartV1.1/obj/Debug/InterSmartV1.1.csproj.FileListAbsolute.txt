@@ -207,3 +207,8 @@ C:\Users\David\Desktop\InterSmart1.8\InterSmartV1.7\InterSmartV1.1\InterSmartV1.
 C:\Users\David\Desktop\InterSmart1.8\InterSmartV1.7\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.g.resources
 C:\Users\David\Desktop\InterSmart1.8\InterSmartV1.7\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1._1.Properties.Resources.resources
 C:\Users\David\Desktop\InterSmart1.8\InterSmartV1.7\InterSmartV1.1\InterSmartV1.1\obj\Debug\InterSmartV1.1.csproj.GenerateResource.Cache
+C:\Users\David\Desktop\InterSmart1.8\InterSmartV1.7\InterSmartV1.1\InterSmartV1.1\bin\Debug\Microsoft.Office.InfoPath.Permission.dll
+C:\Users\David\Desktop\InterSmart1.8\InterSmartV1.7\InterSmartV1.1\InterSmartV1.1\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\David\Desktop\InterSmart1.8\InterSmartV1.7\InterSmartV1.1\InterSmartV1.1\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+C:\Users\David\Desktop\InterSmart1.8\InterSmartV1.7\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\DataBase.baml
+C:\Users\David\Desktop\InterSmart1.8\InterSmartV1.7\InterSmartV1.1\InterSmartV1.1\obj\Debug\Menu\DataBase.g.cs

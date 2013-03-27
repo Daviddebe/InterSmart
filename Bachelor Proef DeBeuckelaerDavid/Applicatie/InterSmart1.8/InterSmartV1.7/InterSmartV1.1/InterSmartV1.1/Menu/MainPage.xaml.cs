@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace InterSmartV1._1.Menu
@@ -99,17 +100,15 @@ namespace InterSmartV1._1.Menu
             count++;
         }
 
-       
-
-       
-
         private void BtnClear_Click(object sender, RoutedEventArgs e) //alles clearen
         {
             tweet.add = true;
             tweet.alleTweets = 0;
             _tweets.Clear();
+            _Vragen.Clear();
             rBtnRefr.IsChecked = false;
             TextTweet.Clear();
+            txbxQuestionTweet.Clear();
             //while (_tweets.Count > 0)  knop bijmaken om lijst te clearen
             //{
             //    _tweets.RemoveAt(_tweets.Count - 1);
@@ -133,26 +132,44 @@ namespace InterSmartV1._1.Menu
             timer.Stop();
         }
 
-        private void knopZien_Click(object sender, RoutedEventArgs e)
+        private void knopZien_Click(object sender, RoutedEventArgs e) //database aanmaken enkel van binnekomde tweets nog geen vragen fzo
         {
-            //MessageBox.Show(_tweets[TweetList.SelectedIndex].Ontvangen.ToString());
-            string tempfile = System.IO.Path.GetTempFileName();
-            StreamWriter writer = new StreamWriter(tempfile);
-            OpenFileDialog f = new OpenFileDialog();
-            f.ShowDialog();
-            StreamReader reader = new StreamReader(f.FileName);
+             
+            XmlWriterSettings xwriter = new XmlWriterSettings();
+            xwriter.Indent = true; ;
+            xwriter.OmitXmlDeclaration = true;
+            xwriter.Encoding = Encoding.ASCII;
+            string path = @"TweetDB\" + TextTweet.Text.ToString() + ".xml"; //lokatie van opslaan
+        
+            using (XmlWriter writer = XmlWriter.Create(path, xwriter))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("XMLFILE");
+          
             foreach (Tweet t in _tweets)
             {
-                writer.WriteLine(t.Author.Name.ToString() + "Intersmart date" + t.Ontvangen.ToString() + "  Tweet date : " + t.TweetDate);
-
+                writer.WriteStartElement("Tweet");
+                writer.WriteStartElement("Author");
+                writer.WriteString(t.Author.Name.ToString());
+                writer.WriteEndElement();
+                writer.WriteStartElement("Title");
+                writer.WriteString(t.Title.ToString());
+                writer.WriteEndElement();
+                writer.WriteStartElement("TweetDate");
+                writer.WriteString(t.TweetDate.ToString());
+                writer.WriteEndElement();
+                writer.WriteEndElement();
             }
-            //  writer.WriteLine(_tweets[TweetList.SelectedIndex].Ontvangen.ToString());
-
-            while (!reader.EndOfStream)
-                writer.WriteLine(reader.ReadLine());
+            writer.WriteEndDocument();
             writer.Close();
-            reader.Close();
-            File.Copy(tempfile, f.FileName, true);
+            MessageBox.Show("kleir");
+            }
+        }
+
+        private void btnDataBase_Click_1(object sender, RoutedEventArgs e)
+        {
+            InterSmartV1._1.Menu.DataBase WinDataBase = new Menu.DataBase();
+            WinDataBase.Show();
         }
 
         

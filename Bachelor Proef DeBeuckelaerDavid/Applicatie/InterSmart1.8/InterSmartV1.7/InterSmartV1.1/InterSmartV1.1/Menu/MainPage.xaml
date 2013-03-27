@@ -51,7 +51,9 @@
         <Button x:Name="BtnClear" Grid.Column="9" Grid.Row="1" Grid.ColumnSpan="3"  Content="Clear" Click="BtnClear_Click"/>
         <Button x:Name="BtnStats" Content="Statistieken" Grid.Column="14" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="3" Click="BtnStats_Click"></Button>
         <CheckBox x:Name="rBtnRefr" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="4" VerticalAlignment="Center" Checked="rBtnRefr_Checked_2" Unchecked="rBtnRefr_Unchecked_1">Auto Refresh</CheckBox>
-        <Button Grid.ColumnSpan="3" Grid.Column="14" Grid.Row="10" Grid.RowSpan="2" x:Name="knopZien" Click="knopZien_Click">Add time to txt</Button>
+        <Button Grid.ColumnSpan="3" Grid.Column="14" Grid.Row="9" Grid.RowSpan="2" x:Name="knopZien" Click="knopZien_Click">Send to database</Button>
+        <Button Grid.ColumnSpan="3" Grid.Column="14" Grid.Row="12" Grid.RowSpan="2" x:Name="btnDataBase" Click="btnDataBase_Click_1">DataBase</Button>
+
         <!--Icoontje-->
         <Image Grid.ColumnSpan="4" Grid.Column="12" Grid.RowSpan="3" Source="/InterSmartV1.1;component/Images/logoklein.png" Stretch="Fill" Grid.Row="0" Margin="19,0,0,0"/>
         <TextBlock Grid.Column="14" Grid.Row="1" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="txtAantalTweets" Text="{Binding ElementName=TweetList, Path=Items.Count, Mode=OneWay}" />
