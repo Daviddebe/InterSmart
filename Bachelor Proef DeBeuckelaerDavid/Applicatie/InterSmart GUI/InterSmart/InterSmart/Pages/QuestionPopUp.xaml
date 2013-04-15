@@ -1,0 +1,35 @@
+﻿<Window x:Class="InterSmart.Pages.QuestionPopUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="QuestionPopUp" Width="298.507" SizeToContent="Height"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <Grid RenderTransformOrigin="0,1" Height="142" Margin="0,0,67,0" >
+
+        <!-- Notification area -->
+        <Border BorderThickness="1" Background="LightBlue" BorderBrush="Black" CornerRadius="10">
+            <TextBlock x:Name="txtPop" Margin="54,30,-54,-30"><Run Language="nl-be" Text="Er is een vraag"/></TextBlock>
+        </Border>
+        <!-- Animation -->
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                            <SplineDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                            <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                            <SplineDoubleKeyFrame KeyTime="0:0:18" Value="1"/>
+                            <SplineDoubleKeyFrame KeyTime="0:0:20" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Grid.Triggers>
+
+        <Grid.RenderTransform>
+            <ScaleTransform ScaleY="1" />
+        </Grid.RenderTransform>
+
+    </Grid>
+</Window>

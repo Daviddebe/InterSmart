@@ -1,0 +1,12 @@
+C:\Users\David\Desktop\Draganddroptest\Draganddroptest\bin\Debug\Draganddroptest.exe.config
+C:\Users\David\Desktop\Draganddroptest\Draganddroptest\obj\Debug\Draganddroptest.csprojResolveAssemblyReference.cache
+C:\Users\David\Desktop\Draganddroptest\Draganddroptest\bin\Debug\Draganddroptest.exe
+C:\Users\David\Desktop\Draganddroptest\Draganddroptest\bin\Debug\Draganddroptest.pdb
+C:\Users\David\Desktop\Draganddroptest\Draganddroptest\obj\Debug\Draganddroptest.exe
+C:\Users\David\Desktop\Draganddroptest\Draganddroptest\obj\Debug\Draganddroptest.pdb
+C:\Users\David\Desktop\InterSmart Console Versie\Draganddroptest\Draganddroptest\bin\Debug\Draganddroptest.exe.config
+C:\Users\David\Desktop\InterSmart Console Versie\Draganddroptest\Draganddroptest\obj\Debug\Draganddroptest.exe
+C:\Users\David\Desktop\InterSmart Console Versie\Draganddroptest\Draganddroptest\obj\Debug\Draganddroptest.pdb
+C:\Users\David\Desktop\InterSmart Console Versie\Draganddroptest\Draganddroptest\bin\Debug\Draganddroptest.exe
+C:\Users\David\Desktop\InterSmart Console Versie\Draganddroptest\Draganddroptest\bin\Debug\Draganddroptest.pdb
+C:\Users\David\Desktop\InterSmart Console Versie\Draganddroptest\Draganddroptest\obj\Debug\Draganddroptest.csprojResolveAssemblyReference.cache

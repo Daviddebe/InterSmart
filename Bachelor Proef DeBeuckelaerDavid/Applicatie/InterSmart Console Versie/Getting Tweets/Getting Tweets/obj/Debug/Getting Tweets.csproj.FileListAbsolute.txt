@@ -1,0 +1,6 @@
+C:\Users\David\Desktop\InterSmart Console Versie\Getting Tweets\Getting Tweets\bin\Debug\Getting Tweets.exe.config
+C:\Users\David\Desktop\InterSmart Console Versie\Getting Tweets\Getting Tweets\bin\Debug\Getting Tweets.exe
+C:\Users\David\Desktop\InterSmart Console Versie\Getting Tweets\Getting Tweets\bin\Debug\Getting Tweets.pdb
+C:\Users\David\Desktop\InterSmart Console Versie\Getting Tweets\Getting Tweets\obj\Debug\Getting Tweets.csprojResolveAssemblyReference.cache
+C:\Users\David\Desktop\InterSmart Console Versie\Getting Tweets\Getting Tweets\obj\Debug\Getting Tweets.exe
+C:\Users\David\Desktop\InterSmart Console Versie\Getting Tweets\Getting Tweets\obj\Debug\Getting Tweets.pdb

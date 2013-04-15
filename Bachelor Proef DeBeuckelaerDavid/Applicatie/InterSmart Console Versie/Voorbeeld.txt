@@ -1,0 +1,33 @@
+ System.Console.WriteLine("druk 1 om u file naar hier te slepen 2 om het pad zelf op te geven.");
+            string input = System.Console.ReadLine();
+            bool next = false;
+            string path = "";
+            switch (input)
+            {
+                case "1":
+                    System.Console.WriteLine("gelieve uw file nu te droppen en dan 2x op enter te drukken");
+                    path = System.Console.ReadLine();
+                    if (Console.ReadKey().Key == ConsoleKey.Enter)
+                    {
+                        next = true;
+                    }
+                    break;
+                case "2":
+                    System.Console.WriteLine("gelieve uw file pas nu te typen en dan op enter te drukken");
+                    path = System.Console.ReadLine();
+                    if (Console.ReadKey().Key == ConsoleKey.Enter)
+                    {
+                        next = true;
+                    }
+                    break;
+                default:
+                    System.Console.WriteLine("gelieve 1 of 2 in te voegen.");
+                    break;
+            }
+            if (next == true)
+            {
+                System.Console.WriteLine("de te gebruiken ppt is: " + path);
+            }
+
+
+Automatich opnene na het slepen : [19:05:30] lewis: System.Diagnostics.Process.Start(path);
