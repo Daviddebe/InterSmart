@@ -5,36 +5,45 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace Getting_Tweets
 {
    public class Program
     {
+       static getTweets tweet = new getTweets();
+       static ObservableCollection<Tweet> _tweets = new ObservableCollection<Tweet>();
+
        public static void Main(string[] args)
        {
-           weergeven();
+           System.Timers.Timer timer = new System.Timers.Timer();
+           timer.Elapsed += timer_Elapsed;
+           timer.Interval = 3000;
+           timer.Enabled = true;
+           Console.WriteLine("Press \'q\' to quit the sample.");
+           while (Console.Read() != 'q') ;
        }
 
+       static void timer_Elapsed(object sender, ElapsedEventArgs e)
+       {
+           weergeven();
+       }
        public static void weergeven()
        {
-           getTweets tweet = new getTweets();
-           ObservableCollection<Tweet> _tweets = new ObservableCollection<Tweet>();
-           _tweets = tweet.GetCollection();
 
-           Timer timer = new Timer(ComputeBoundOp, 5, 0, 1000);
+            _tweets = tweet.GetCollection();
+
+
            Console.WriteLine("Tweets:");
-           Console.ReadLine();
-
+           Console.WriteLine("---------------------------------------------------");
+           Console.WriteLine("---------------------------------------------------");
            foreach (var t in _tweets)
            {
-               Console.WriteLine(t.Title);
+               Console.WriteLine(t.Author.Name + " tweeted: " +  t.Title + " at  " +  t.TweetDate);
+               Console.WriteLine("---------------------------------------------------");
            }
-           Console.ReadLine();
-       }
-
-       public static void ComputeBoundOp(Object state)
-       {
-           weergeven();
+           Console.WriteLine("---------------------------------------------------");
        }
     }
 }
+

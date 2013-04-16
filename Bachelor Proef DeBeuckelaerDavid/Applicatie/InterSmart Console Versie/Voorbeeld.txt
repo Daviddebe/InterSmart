@@ -29,5 +29,3 @@
                 System.Console.WriteLine("de te gebruiken ppt is: " + path);
             }
 
-
-Automatich opnene na het slepen : [19:05:30] lewis: System.Diagnostics.Process.Start(path);
