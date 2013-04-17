@@ -5,3 +5,10 @@ C:\Users\David\Desktop\InterSmart Console Versie\DataBase\DataBase\bin\Debug\Sys
 C:\Users\David\Desktop\InterSmart Console Versie\DataBase\DataBase\obj\Debug\DataBase.csprojResolveAssemblyReference.cache
 C:\Users\David\Desktop\InterSmart Console Versie\DataBase\DataBase\obj\Debug\DataBase.exe
 C:\Users\David\Desktop\InterSmart Console Versie\DataBase\DataBase\obj\Debug\DataBase.pdb
+C:\InterSmart\Bachelor Proef DeBeuckelaerDavid\Applicatie\InterSmart Console Versie\DataBase\DataBase\bin\Debug\DataBase.exe.config
+C:\InterSmart\Bachelor Proef DeBeuckelaerDavid\Applicatie\InterSmart Console Versie\DataBase\DataBase\obj\Debug\DataBase.exe
+C:\InterSmart\Bachelor Proef DeBeuckelaerDavid\Applicatie\InterSmart Console Versie\DataBase\DataBase\obj\Debug\DataBase.pdb
+C:\InterSmart\Bachelor Proef DeBeuckelaerDavid\Applicatie\InterSmart Console Versie\DataBase\DataBase\bin\Debug\DataBase.exe
+C:\InterSmart\Bachelor Proef DeBeuckelaerDavid\Applicatie\InterSmart Console Versie\DataBase\DataBase\bin\Debug\DataBase.pdb
+C:\InterSmart\Bachelor Proef DeBeuckelaerDavid\Applicatie\InterSmart Console Versie\DataBase\DataBase\bin\Debug\System.Data.SQLite.xml
+C:\InterSmart\Bachelor Proef DeBeuckelaerDavid\Applicatie\InterSmart Console Versie\DataBase\DataBase\obj\Debug\DataBase.csprojResolveAssemblyReference.cache

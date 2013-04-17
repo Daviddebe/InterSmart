@@ -26,7 +26,7 @@ namespace DataBase
            // CreateTable2();
             //fillTable();
             //fillTable2();
-            //printUsers();
+            printUsers();
             //printtweets();
          
         }
