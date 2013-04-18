@@ -17,20 +17,20 @@ namespace Getting_Tweets
 
        public static void Main(string[] args)
        {
+           //weergeven();
+       start:
            DataProg.DataProg();
-       //start:
-       //    weergeven();
-       //  if(_tweets.Count() <=0)
-       //  {
-       //      goto start;
-       //  }
-       //  else
-       //  {
-       //      Console.WriteLine("einde programma");
-       //  }
+           if (_tweets.Count() <= 0)
+           {
+               goto start;
+           }
+           else
+           {
+               Console.WriteLine("einde programma");
+           }
 
-       //  Console.WriteLine("Press \'q\' to quit the sample.");
-       //  while (Console.Read() != 'q') ;
+           Console.WriteLine("Press \'q\' to quit the sample.");
+           while (Console.Read() != 'q') ;
 
            //DataProg.DataProg();
            //DataProg.printtweet();
@@ -48,6 +48,7 @@ namespace Getting_Tweets
        public static void weergeven()
        {
            _tweets = tweet.GetCollection();
+          
            if (_tweets.Count() > 0)
            {
                Console.WriteLine("Tweets:");

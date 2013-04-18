@@ -16,15 +16,16 @@ namespace Getting_Tweets
         // Holds our connection with the database
         SQLiteConnection m_dbConnection;
 
-
         public void DataProg()
         {
             createNewDatabase();
             connectToDatabase();
             //CreateTable();
-            fillTable();
-            printUsers();
-            //printtweet();
+            //CreateTweetTable();
+            //fillTable();
+            //fillTableTweet();
+            //printUsers();
+             printtweet();
         }
 
 
@@ -42,29 +43,43 @@ namespace Getting_Tweets
         //create table
         public void CreateTable()
         {
-            string UserTable = "create table User (ID int, name varchar)";
+            string UserTable = "create table User (ID INTEGER PRIMARY KEY, name VARCHAR UNIQUE)";
             SQLiteCommand command2 = new SQLiteCommand(UserTable, m_dbConnection);
             command2.ExecuteNonQuery();
+        }
+        public void CreateTweetTable()
+        {
+            string TweetTable = "create table Tweet (ID INTEGER PRIMARY KEY,UserID INTEGER,  Answer varchar UNIQUE, Score int, FOREIGN KEY(UserID) REFERENCES User(ID))";
+            SQLiteCommand command = new SQLiteCommand(TweetTable, m_dbConnection);
+            command.ExecuteNonQuery();
         }
         //fill table with info
         public void fillTable()
         {
-            //_tweets = tweet.GetCollection();
-            //foreach (var t in _tweets)
-            //{
-            //    string test = t.Author.Name;
-            //    string UserTable = "insert into User (ID, name) values (1, $test)";
-            //    SQLiteCommand command2 = new SQLiteCommand(UserTable, m_dbConnection);
-            //    command2.Parameters.AddWithValue("$test", test);
-            //    command2.ExecuteNonQuery();
-
-            //}
-
-            string naam = "testeeeeeeeeeee";
-            string UserTable = "insert into User (ID, name) values (1, $naam)";
+            _tweets = tweet.GetCollection();
+            foreach (var t in _tweets)
+            {
+            string naam = t.Author.Name;
+            string UserTable = "insert or ignore into User(name) values ($naam)";
             SQLiteCommand command2 = new SQLiteCommand(UserTable, m_dbConnection);
             command2.Parameters.AddWithValue("$naam", naam);
             command2.ExecuteNonQuery();
+            }
+           
+
+        }
+
+        public void fillTableTweet()
+        {
+            _tweets = tweet.GetCollection();
+            foreach (var t in _tweets)
+            {
+                string title = t.Title;
+                string TweetTable = "insert or ignore into Tweet(Answer) values ($title)";
+                SQLiteCommand command = new SQLiteCommand(TweetTable, m_dbConnection);
+                command.Parameters.AddWithValue("$title", title);
+                command.ExecuteNonQuery();
+            }
 
 
         }
@@ -81,19 +96,13 @@ namespace Getting_Tweets
 
         public void printtweet()
         {
-            _tweets = tweet.GetCollection();
-            if (_tweets.Count() > 0)
-            {
-                Console.WriteLine("Tweets:");
-                Console.WriteLine("---------------------------------------------------");
-                Console.WriteLine("---------------------------------------------------");
-                foreach (var t in _tweets)
-                {
-                    Console.WriteLine(t.Author.Name + " tweeted: " + t.Title + " at  " + t.TweetDate);
-                    Console.WriteLine("---------------------------------------------------");
-                }
-                Console.WriteLine("---------------------------------------------------");
-            }
+            string tweetTable = "select * from Tweet order by Answer desc";
+            SQLiteCommand command = new SQLiteCommand(tweetTable, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+            Console.WriteLine("Tweet tabel: ");
+            while (reader.Read())
+                Console.WriteLine("Antwoorden:" + reader["Answer"]);
+            Console.Read();
 
         }
 
