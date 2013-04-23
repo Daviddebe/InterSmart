@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -13,11 +15,18 @@ namespace Getting_Tweets
     {
         static getTweets tweet = new getTweets();
         static ObservableCollection<Tweet> _tweets = new ObservableCollection<Tweet>();
-       static DataBase DataProg = new DataBase();
+        static DataBase DataProg = new DataBase();
+        public static string file; 
 
        public static void Main(string[] args)
-       {
-           //weergeven();
+        {
+            #region Drag en drop
+            if (args.Length > 0)
+            {
+                file = args[0];
+            }
+            #endregion 
+        //weergeven();
        start:
            DataProg.DataProg();
            if (_tweets.Count() <= 0)
@@ -63,6 +72,7 @@ namespace Getting_Tweets
            }
        } //tweets weergeven op console
 
+      
     }
 }
 
