@@ -50,6 +50,7 @@
     <Compile Include="getTweets.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Score.cs" />
     <Compile Include="Tweet.cs" />
   </ItemGroup>
   <ItemGroup>

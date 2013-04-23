@@ -17,6 +17,7 @@ namespace Getting_Tweets
         WebClient client = new WebClient(); //methode voor ontvangen/zenden van data van een resourse geidentifiseerd door een URI
         public int alleTweets = 0;
         public bool add = true;
+
         #endregion
 
         #region Quiz feature
@@ -83,5 +84,7 @@ namespace Getting_Tweets
             return _tweets;
         }
         #endregion 
+
+        
     }
 }

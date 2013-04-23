@@ -26,8 +26,8 @@ namespace Getting_Tweets
             createNewDatabase();
             connectToDatabase();
         //CreateTable();
-         // CreateTweetTable();
-           // CreatePresentationTable();
+         //CreateTweetTable();
+           //CreatePresentationTable();
         //    fillTable();
          //fillTableTweet();
         vreemdesleutels();
@@ -56,13 +56,13 @@ namespace Getting_Tweets
         }
         public void CreateTweetTable()
         {
-            string TweetTable = "create table Tweet (ID INTEGER PRIMARY KEY, Answer varchar UNIQUE, Score int,UserID INTEGER, PresentationID int, QuestionAnswers varchar)";
+            string TweetTable = "create table Tweet (ID INTEGER PRIMARY KEY, Answer varchar UNIQUE, Score int,UserID INTEGER, PresentationID int)";
             SQLiteCommand command = new SQLiteCommand(TweetTable, m_dbConnection);
             command.ExecuteNonQuery();
         }
         public void CreatePresentationTable()
         {
-            string PresentationTable = "create table Presentation (ID INTEGER PRIMARY KEY, PresentationName varchar UNIQUE)";
+            string PresentationTable = "create table Presentation (ID INTEGER PRIMARY KEY, PresentationName varchar UNIQUE, QuestionAnswers varchar)";
             SQLiteCommand command3 = new SQLiteCommand(PresentationTable, m_dbConnection);
             command3.ExecuteNonQuery();
         }
@@ -109,12 +109,14 @@ namespace Getting_Tweets
         }
         public void vreemdesleutels()
         {
+            string QuestionAnswers = Program.Antwoorden.ToUpper();
             string presentatie = "";
             string filename = Path.GetFileNameWithoutExtension(Program.file);
             string PresentationName = filename;
-            string PresentatieTable = "insert or ignore into Presentation(PresentationName) values ($filename)";
+            string PresentatieTable = "insert or ignore into Presentation(PresentationName, QuestionAnswers) values ($filename, $QuestionAnswers)";
             SQLiteCommand command10 = new SQLiteCommand(PresentatieTable, m_dbConnection);
             command10.Parameters.AddWithValue("$filename", PresentationName);
+            command10.Parameters.AddWithValue("$QuestionAnswers", QuestionAnswers);
             command10.ExecuteNonQuery();
 
             _tweets = tweet.GetCollection();
@@ -123,6 +125,8 @@ namespace Getting_Tweets
                 string UserId = "";
                 string Author = t.Author.Name;
                 string title = t.Title;
+                title = title.Replace("@Inter_Smart", ""); // @inter_smart er af knippen van de tweets
+                string UpperCasetitle = title.ToUpper();// druk letters
                 SQLiteParameter param = new SQLiteParameter("@tempString");
                 param.Value = Author;
                 SQLiteParameter param2 = new SQLiteParameter("@tempString2");
@@ -147,7 +151,7 @@ namespace Getting_Tweets
 
                 string TweetTable = "insert or ignore into Tweet(Answer, UserID, PresentationID) values ($title, $UserId, $PresentationID)";
                 SQLiteCommand command = new SQLiteCommand(TweetTable, m_dbConnection);
-                command.Parameters.AddWithValue("$title", title);
+                command.Parameters.AddWithValue("$title", UpperCasetitle);
                 command.Parameters.AddWithValue("$UserId", UserId);
                 command.Parameters.AddWithValue("$PresentationID", presentatie);
                 command.ExecuteNonQuery();

@@ -16,7 +16,9 @@ namespace Getting_Tweets
         static getTweets tweet = new getTweets();
         static ObservableCollection<Tweet> _tweets = new ObservableCollection<Tweet>();
         static DataBase DataProg = new DataBase();
-        public static string file; 
+        static Score deScore = new Score();
+        public static string file;
+        public static string Antwoorden;
 
        public static void Main(string[] args)
         {
@@ -26,20 +28,26 @@ namespace Getting_Tweets
                 file = args[0];
             }
             #endregion 
-        //weergeven();
-       start:
-           DataProg.DataProg();
-           if (_tweets.Count() <= 0)
-           {
-               goto start;
-           }
-           else
-           {
-               Console.WriteLine("einde programma");
-           }
 
-           Console.WriteLine("Press \'q\' to quit the sample.");
-           while (Console.Read() != 'q') ;
+            Console.WriteLine("Geef antwoorden van presentatie in :");
+            Antwoorden = Console.ReadLine();
+            Antwoorden.ToCharArray();
+
+        //weergeven();
+            //   deScore.score();  
+        start:
+            DataProg.DataProg();
+            if (_tweets.Count() <= 0)
+            {
+                goto start;
+            }
+            else
+            {
+                Console.WriteLine("einde programma");
+            }
+
+            Console.WriteLine("Press \'q\' to quit the sample.");
+            while (Console.Read() != 'q') ;
 
            //DataProg.DataProg();
            //DataProg.printtweet();
