@@ -31,8 +31,9 @@ namespace Getting_Tweets
         //    fillTable();
          //fillTableTweet();
         vreemdesleutels();
-         // printUsers();
-           printtweet();
+          //printUsers();
+           //printtweet();
+            print();
         }
 
         // Creates an empty database file
@@ -155,20 +156,153 @@ namespace Getting_Tweets
                 command.Parameters.AddWithValue("$UserId", UserId);
                 command.Parameters.AddWithValue("$PresentationID", presentatie);
                 command.ExecuteNonQuery();
+
             }
         }
 
         public void printtweet()
         {
-            string tweetTable = "select * from Tweet";
+            string tweetTable = "select * from Tweet ";
             SQLiteCommand command = new SQLiteCommand(tweetTable, m_dbConnection);
             SQLiteDataReader reader = command.ExecuteReader();
             Console.WriteLine("Tweet tabel: ");
             while (reader.Read())
-                Console.WriteLine("ID :" + reader["ID"] + "\nAntwoorden:" + reader["Answer"] + "\tUserID :" + reader["UserID"]+ "PresentatieContext: " +reader["PresentationID"]);
+                Console.WriteLine("\nAntwoorden:" + reader["Answer"] + "\tUserID :" + reader["UserID"]+ "PresentatieContext: " +reader["PresentationID"]);
             Console.Read();
         }
-       
+
+        public void Score()
+        {
+            _tweets = tweet.GetCollection();
+            //Program.Antwoorden[0].ToString(); // eerste antwoord
+            foreach (var t in _tweets)
+            {
+                string Author = t.Author.Name;
+                //where presentatieID is momentel presentatie ID --> viarable presentatie in methode vreemdesleutel
+                
+            }
+        }
+        public void print()
+        {
+            _tweets = tweet.GetCollection();
+            string presentatie = "";
+            HashSet<int> lijstTweets = new HashSet<int>();
+            List<String> UserTweets = new List<string>();
+
+            string filename = Path.GetFileNameWithoutExtension(Program.file);
+            string PresentationName = filename;
+            string getPresentationID = "select ID from Presentation where PresentationName = \'" + PresentationName + "\'";
+            SQLiteCommand command1 = new SQLiteCommand(getPresentationID, m_dbConnection);
+            SQLiteDataReader reader2 = command1.ExecuteReader();
+            while (reader2.Read())
+                presentatie = (reader2["ID"]).ToString();
+
+            
+                string tweetTable = "select UserID from Tweet where PresentationID = $Presentatie";
+                SQLiteCommand command15 = new SQLiteCommand(tweetTable, m_dbConnection);
+                command15.Parameters.AddWithValue("$Presentatie", presentatie);
+                SQLiteDataReader reader15 = command15.ExecuteReader();
+                while (reader15.Read())
+                    lijstTweets.Add(reader15.GetInt32(0));
+                
+
+                foreach (var item in lijstTweets)
+                {
+                    Console.WriteLine(item);
+                    string tweetUsers = "select Answer, UserID from Tweet where UserID = \'" + item + "\' AND PresentationID = \'" + presentatie + "\'";
+                    SQLiteCommand commandUser = new SQLiteCommand(tweetUsers, m_dbConnection);
+                    SQLiteDataReader readerUser = commandUser.ExecuteReader();
+                    while (readerUser.Read())
+                        UserTweets.Add(readerUser.GetString(0));
+                    UserTweets.ForEach(Console.WriteLine);
+                    Console.ReadLine();//hier methode van score te berekenen plaatsen
+                    UserTweets.Clear();
+                }
+
+                Console.Read();
+
+        }
+        public void scoreberekening()
+        {
+
+            string Antwoord1 = Program.Antwoorden[0].ToString();
+            string Antwoord2 = Program.Antwoorden[1].ToString();
+            string Antwoord3 = Program.Antwoorden[2].ToString();
+            string Antwoord4 = Program.Antwoorden[3].ToString();
+            string Antwoord5 = Program.Antwoorden[4].ToString();
+            int scoren = 0;
+
+            foreach (var t in _tweets)
+            {
+                string cut = t.Title;
+                cut = cut.Substring(0, cut.Length - 12);//@Intersmart van tweets afknippen
+                string cutUpperCase = cut.ToUpper(); //naar druk letters zetten
+
+                if (cutUpperCase.Contains("1")) //vraag 1
+                {
+                    if (cutUpperCase.Contains(Antwoord1.ToUpper()))
+                    {
+                        scoren++;
+                        Console.WriteLine(cutUpperCase.ToString());
+                    }
+                    else
+                    {
+                        Console.WriteLine("Fout");
+                    }
+                }
+                else if (cutUpperCase.Contains("2")) //vraag 2
+                {
+                    if (cutUpperCase.Contains(Antwoord2.ToUpper()))
+                    {
+                        scoren++;
+                        Console.WriteLine(cutUpperCase.ToString());
+                    }
+                    else
+                    {
+                        Console.WriteLine("Fout");
+                    }
+                }
+                else if (cutUpperCase.Contains("3")) //vraag 3
+                {
+                    if (cutUpperCase.Contains(Antwoord3.ToUpper()))
+                    {
+                        scoren++;
+                        Console.WriteLine(cutUpperCase.ToString());
+                    }
+                    else
+                    {
+                        Console.WriteLine("Fout");
+                    }
+                }
+                else if (cutUpperCase.Contains("4")) //vraag 4
+                {
+                    if (cutUpperCase.Contains(Antwoord4.ToUpper()))
+                    {
+                        scoren++;
+                        Console.WriteLine(cutUpperCase.ToString());
+                    }
+                    else
+                    {
+                        Console.WriteLine("Fout");
+                    }
+                }
+                else if (cutUpperCase.Contains("5")) //vraag 5
+                {
+                    if (cutUpperCase.Contains(Antwoord5.ToUpper()))
+                    {
+                        scoren++;
+                        Console.WriteLine(cutUpperCase.ToString());
+                    }
+                    else
+                    {
+                        Console.WriteLine("Fout");
+                    }
+                }
+                Console.WriteLine(scoren.ToString());
+            }
+
+            Console.ReadLine();
+        }
     }
 }
  
