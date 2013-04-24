@@ -28,6 +28,7 @@ namespace Getting_Tweets
         //CreateTable();
          //CreateTweetTable();
            //CreatePresentationTable();
+            //CreateTabelScore();
         //    fillTable();
          //fillTableTweet();
         vreemdesleutels();
@@ -66,6 +67,13 @@ namespace Getting_Tweets
             string PresentationTable = "create table Presentation (ID INTEGER PRIMARY KEY, PresentationName varchar UNIQUE, QuestionAnswers varchar)";
             SQLiteCommand command3 = new SQLiteCommand(PresentationTable, m_dbConnection);
             command3.ExecuteNonQuery();
+        }
+
+        public void CreateTabelScore()
+        {
+            string ScoreTable = "create table Score(ID INTEGER PRIMARY KEY, PresentationID INTEGER, UserID INTEGER, Score INTEGER)";
+            SQLiteCommand command30 = new SQLiteCommand(ScoreTable, m_dbConnection);
+            command30.ExecuteNonQuery();
         }
         //fill table with info
         public void fillTable()
@@ -188,6 +196,12 @@ namespace Getting_Tweets
             string presentatie = "";
             HashSet<int> lijstTweets = new HashSet<int>();
             List<String> UserTweets = new List<string>();
+            string Antwoord1 = Program.Antwoorden[0].ToString();
+            string Antwoord2 = Program.Antwoorden[1].ToString();
+            string Antwoord3 = Program.Antwoorden[2].ToString();
+            string Antwoord4 = Program.Antwoorden[3].ToString();
+            string Antwoord5 = Program.Antwoorden[4].ToString();
+            int scoren = 0;
 
             string filename = Path.GetFileNameWithoutExtension(Program.file);
             string PresentationName = filename;
@@ -195,16 +209,18 @@ namespace Getting_Tweets
             SQLiteCommand command1 = new SQLiteCommand(getPresentationID, m_dbConnection);
             SQLiteDataReader reader2 = command1.ExecuteReader();
             while (reader2.Read())
-                presentatie = (reader2["ID"]).ToString();
-
+            {
+                presentatie = (reader2["ID"]).ToString(); //momentele ID van presentatie er uit halen
+            }
             
                 string tweetTable = "select UserID from Tweet where PresentationID = $Presentatie";
                 SQLiteCommand command15 = new SQLiteCommand(tweetTable, m_dbConnection);
                 command15.Parameters.AddWithValue("$Presentatie", presentatie);
                 SQLiteDataReader reader15 = command15.ExecuteReader();
                 while (reader15.Read())
-                    lijstTweets.Add(reader15.GetInt32(0));
-                
+                {
+                    lijstTweets.Add(reader15.GetInt32(0));  //lijst met alle users van de momenteel geopende ID
+                }
 
                 foreach (var item in lijstTweets)
                 {
@@ -215,94 +231,87 @@ namespace Getting_Tweets
                     while (readerUser.Read())
                         UserTweets.Add(readerUser.GetString(0));
                     UserTweets.ForEach(Console.WriteLine);
-                    Console.ReadLine();//hier methode van score te berekenen plaatsen
+                    foreach (var antwoord in UserTweets)
+                    {
+
+                        if (antwoord.Contains("1")) //vraag 1
+                        {
+                            if (antwoord.Contains(Antwoord1.ToUpper()))
+                            {
+                                scoren ++;
+                                Console.WriteLine("Juist" + antwoord.ToString());
+                            }
+                            else
+                            {
+                                Console.WriteLine("Fout");
+                            }
+                        }
+
+                        else if (antwoord.Contains("2")) //vraag 1
+                        {
+                            if (antwoord.Contains(Antwoord2.ToUpper()))
+                            {
+                                scoren ++;
+                                Console.WriteLine("Juist" + antwoord.ToString());
+                            }
+                            else
+                            {
+                                Console.WriteLine("Fout");
+                            }
+                        }
+                        else if (antwoord.Contains("3")) //vraag 1
+                        {
+                            if (antwoord.Contains(Antwoord3.ToUpper()))
+                            {
+                                scoren ++;
+                                Console.WriteLine("Juist" + antwoord.ToString());
+                            }
+                            else
+                            {
+                                Console.WriteLine("Fout");
+                            }
+                        }
+                        else if (antwoord.Contains("4")) //vraag 1
+                        {
+                            if (antwoord.Contains(Antwoord4.ToUpper()))
+                            {
+                                scoren ++;
+                                Console.WriteLine("Juist" + antwoord.ToString());
+                            }
+                            else
+                            {
+                                Console.WriteLine("Fout");
+                            }
+                        }
+                        else if (antwoord.Contains("5")) //vraag 1
+                        {
+                            if (antwoord.Contains(Antwoord5.ToUpper()))
+                            {
+                                scoren ++;
+                                Console.WriteLine("Juist" + antwoord.ToString());
+                            }
+                            else
+                            {
+                                Console.WriteLine("Fout");
+                            }
+                        }
+                    }
+                    Console.WriteLine(scoren.ToString());
+                    string insertscore = "insert or ignore into Score(UserID, PresentationID, Score) values($UserID, $PresentationID, $Score)";
+                    SQLiteCommand command33 = new SQLiteCommand(insertscore, m_dbConnection);
+                    command33.Parameters.AddWithValue("$UserID",item);
+                    command33.Parameters.AddWithValue("$PresentationID",presentatie);
+                    command33.Parameters.AddWithValue("$Score",scoren);
+                    command33.ExecuteNonQuery();
+                    Console.ReadLine();
+                    scoren = 0;
                     UserTweets.Clear();
                 }
 
                 Console.Read();
 
         }
-        public void scoreberekening()
-        {
-
-            string Antwoord1 = Program.Antwoorden[0].ToString();
-            string Antwoord2 = Program.Antwoorden[1].ToString();
-            string Antwoord3 = Program.Antwoorden[2].ToString();
-            string Antwoord4 = Program.Antwoorden[3].ToString();
-            string Antwoord5 = Program.Antwoorden[4].ToString();
-            int scoren = 0;
-
-            foreach (var t in _tweets)
-            {
-                string cut = t.Title;
-                cut = cut.Substring(0, cut.Length - 12);//@Intersmart van tweets afknippen
-                string cutUpperCase = cut.ToUpper(); //naar druk letters zetten
-
-                if (cutUpperCase.Contains("1")) //vraag 1
-                {
-                    if (cutUpperCase.Contains(Antwoord1.ToUpper()))
-                    {
-                        scoren++;
-                        Console.WriteLine(cutUpperCase.ToString());
-                    }
-                    else
-                    {
-                        Console.WriteLine("Fout");
-                    }
-                }
-                else if (cutUpperCase.Contains("2")) //vraag 2
-                {
-                    if (cutUpperCase.Contains(Antwoord2.ToUpper()))
-                    {
-                        scoren++;
-                        Console.WriteLine(cutUpperCase.ToString());
-                    }
-                    else
-                    {
-                        Console.WriteLine("Fout");
-                    }
-                }
-                else if (cutUpperCase.Contains("3")) //vraag 3
-                {
-                    if (cutUpperCase.Contains(Antwoord3.ToUpper()))
-                    {
-                        scoren++;
-                        Console.WriteLine(cutUpperCase.ToString());
-                    }
-                    else
-                    {
-                        Console.WriteLine("Fout");
-                    }
-                }
-                else if (cutUpperCase.Contains("4")) //vraag 4
-                {
-                    if (cutUpperCase.Contains(Antwoord4.ToUpper()))
-                    {
-                        scoren++;
-                        Console.WriteLine(cutUpperCase.ToString());
-                    }
-                    else
-                    {
-                        Console.WriteLine("Fout");
-                    }
-                }
-                else if (cutUpperCase.Contains("5")) //vraag 5
-                {
-                    if (cutUpperCase.Contains(Antwoord5.ToUpper()))
-                    {
-                        scoren++;
-                        Console.WriteLine(cutUpperCase.ToString());
-                    }
-                    else
-                    {
-                        Console.WriteLine("Fout");
-                    }
-                }
-                Console.WriteLine(scoren.ToString());
-            }
-
-            Console.ReadLine();
-        }
+        
     }
 }
  
