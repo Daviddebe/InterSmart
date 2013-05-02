@@ -1,7 +1,0 @@
-﻿<Window x:Class="InterSmart.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Intro" Height="450" Width="850" >
-    
-    <Button x:Name="BtnStart" Margin="326,266,360,103" Click="BtnStart_Click">Start</Button>
-</Window>
