@@ -32,7 +32,8 @@ namespace InterSmart_Beta
             }
             Console.WriteLine("Welkom bij InterSmart ! Geopende Presentatie -->" + Path.GetFileNameWithoutExtension(Program.file));
             Console.WriteLine("Geef de antwoorden van de vragen in :");
-            Antwoorden = Console.ReadLine();
+            string iets = Console.ReadLine();
+            Antwoorden = iets.ToUpper();
             Antwoorden.ToCharArray();
             #endregion
 
@@ -42,6 +43,7 @@ namespace InterSmart_Beta
             {
                 DeDataBase.Uitvoeren();
                 DeDataBase.VullenDataBase();
+                DeDataBase.OomfoCharts();
                 DeDataBase.printUsers();
             }
 
