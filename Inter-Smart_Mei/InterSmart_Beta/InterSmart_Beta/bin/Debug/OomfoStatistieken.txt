@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<chart caption="Statistieken" subcaption="" animation="1" xaxisname="Gestelde vragen" yaxisname="Aantal">
+<categories>
+
+<category label="Vraag1"/>
+
+<category label="Vraag2"/>
+
+<category label="Vraag3"/>
+
+</categories>
+<dataset seriesName="Aantal % juist geantwoord">
+
+<set value="75"/>
+
+<set value="11"/>
+
+<set value="11"/>
+
+</dataset>
+<PP_Internal>
+<chart animation="1" themename="Custom"/>
+</PP_Internal>
+</chart>
