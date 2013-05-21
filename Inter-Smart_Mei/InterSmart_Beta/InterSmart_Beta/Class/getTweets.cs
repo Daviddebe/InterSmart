@@ -18,15 +18,17 @@ namespace InterSmart_Beta.Class
         WebClient client = new WebClient(); //methode voor ontvangen/zenden van data van een resourse geidentifiseerd door een URI
         public int alleTweets = 0;
         public bool add = true;
-       
+        int pagina = 1; //de pagina 
+
         #endregion
 
         #region Ontvangen Tweets
-        public void show()
+        public ObservableCollection<Tweet> show()
         {
+            UriTot = "http://search.twitter.com/search.atom?q=Inter_Smart&rpp=100&page="+ pagina.ToString();
             try
             { //aanroepen Twitter API
-                client.DownloadStringAsync(new Uri(UriTot)); //laat zien welke tweets juist moeten worden weergegeven.
+                    client.DownloadStringAsync(new Uri(UriTot)); //laat zien welke tweets juist moeten worden weergegeven.
             }
             catch (Exception) //exc er bij zette moest fout nog toeslagen
             {
@@ -56,28 +58,17 @@ namespace InterSmart_Beta.Class
                                     // De Linq Query zoekt door het document en zoekt al de entries er uit.
                                     // voor elke entry de titel,link, image type
                                 };
-                    if (items.Count() > alleTweets)
+                
+                    if (pagina <=2)
                     {
-                        List<Tweet> templist = new List<Tweet>();
+                        
                         foreach (Tweet t in items)
                         {
-                            templist.Add(t);
+                            _tweets.Add(t);
+                            //Console.WriteLine(t.Title + " totaal:" + _tweets.Count.ToString() + " pagina: " + pagina.ToString());
                         }
-                        for (int i = alleTweets; i < items.Count(); i++)
-                        {
-                            if (add == true)
-                            {
-                                _tweets.Add(templist[i]);
-                                templist[i].Ontvangen = DateTime.Now;
-                            }
-                            else
-                            {
-                                _tweets.Insert(0, templist[items.Count() - i - 1]);
-                                templist[items.Count() - i - 1].Ontvangen = DateTime.Now;
-                            }
-                            alleTweets += 1;
-                        }
-                        add = false;
+                        pagina += 1;
+                        show();
                     }
                 }
                 catch (Exception)
@@ -87,13 +78,13 @@ namespace InterSmart_Beta.Class
                     Environment.Exit(0);
                 }
             };
+            return _tweets;
         }
         public ObservableCollection<Tweet> GetCollection()
         {
-                UriTot = "http://search.twitter.com/search.atom?q=Inter_Smart&rpp=100&page=1";
-                show();
+            UriTot = "http://search.twitter.com/search.atom?q=Inter_Smart&rpp=100&page=1";
+            show();
             return _tweets; 
-
         }
         #endregion 
 

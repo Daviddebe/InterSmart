@@ -18,7 +18,8 @@ namespace InterSmart_Beta
         static DataBase DeDataBase = new DataBase();
         public static string file;
         public static string Antwoorden;
-        public static DateTime deTijd = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 10, 45, 00);
+        public static DateTime deTijd = DateTime.Now;
+        public static int intVerder;
          //DateTime.Now;
         //new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 22, 19, 00);
         #endregion
@@ -34,7 +35,7 @@ namespace InterSmart_Beta
                 Console.ReadLine();
                 Environment.Exit(0);
             }
-            #endregion 
+            #endregion
 
             #region PresentatieContext inladen
             if (args.Length > 0)
@@ -47,9 +48,6 @@ namespace InterSmart_Beta
             Antwoorden = iets.ToUpper();
             Antwoorden.ToCharArray();
             #endregion
-           
-            string verder = "";
-            verder = Console.ReadLine();
 
             #region Internetconnectie nakijken
             if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable().ToString() == "False") //internet connectie nakijken
@@ -60,12 +58,23 @@ namespace InterSmart_Beta
                 while (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable().ToString() == "False") //internet connectie terug 
                 {
                     Console.WriteLine("Nog steeds geen connectie, probeer nogmaals");
-                    Console.ReadLine(); 
+                    Console.ReadLine();
                 }
                 Console.WriteLine("Verbinding is in orde, de tweets worden nu binnengehaalt");
             }
-            #endregion 
-            if (verder == "go")
+            #endregion
+
+            Console.WriteLine("Geef nummer in van de vraag waar u tussenresultaten van wild bekijken");
+            intVerder = int.Parse(Console.ReadLine());
+
+            if (intVerder > 0)
+            {
+                DeDataBase.VraagStatistieken();
+            }
+            Console.WriteLine("aangemaakt: type go en druk enter voor eindresultaten");
+            string verder = "";
+            verder = Console.ReadLine();
+            if (verder == "go") //totaal eindresultaat
             {
                 DeDataBase.Uitvoeren();
                 DeDataBase.VullenDataBase();
@@ -75,13 +84,12 @@ namespace InterSmart_Beta
                 DeDataBase.StatistiekenInDBOpslaan();
                 Console.WriteLine("Statistieken inladen is een succes !");
                 Console.ReadLine();
-               // DeDataBase.printUsers();
+                // DeDataBase.printUsers();
             }
 
         //start:
+        //    _tweets = tweet.show();
         //    weergeven();
-        //    _tweets = tweet.GetCollection();
-
         //    if (_tweets.Count() <= 0)
         //    {
         //        goto start;
@@ -103,7 +111,7 @@ namespace InterSmart_Beta
             System.Threading.Thread.Sleep(3000);
             foreach (var t in _tweets)
             {
-                Console.WriteLine(t.Title + _tweets.Count.ToString());
+              //  Console.WriteLine(t.Title + _tweets.Count.ToString());
             }
         } //tweets weergeven op console
 

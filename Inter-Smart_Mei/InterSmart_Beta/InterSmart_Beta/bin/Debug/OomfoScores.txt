@@ -1,57 +1,17 @@
 <?xml version="1.0" encoding="UTF-16" standalone="yes"?>
-<chart caption="Score" subcaption="" animation="1" xaxisname="Deelnemers" yaxisname="Aantal">
+<chart caption="Score" subcaption="InterSmart Demo Quiz14" animation="1" xaxisname="Deelnemers" yaxisname="Aantal">
 <categories>
 
 <category label="DeBeuckelaerDav (De Beuckelaer David)"/>
 
-<category label="lewis_fidlers (lewis fidlers)"/>
-
 <category label="Thomasdbcklr (Thomas De Beuckelaer)"/>
-
-<category label="DennisVD1989 (Dennis Van Dyck)"/>
-
-<category label="jimmyraets (jimmy raets)"/>
-
-<category label="vanbeekrien (Rien Van Beek)"/>
-
-<category label="Jorisadri1 (Jorisadri)"/>
-
-<category label="KevinHeyvaert (Kevin Heyvaert)"/>
-
-<category label="Bandyc00t (andy verbaenen)"/>
-
-<category label="K0enVe (Koen Verstraelen)"/>
-
-<category label="BrentBoden (brent boden)"/>
-
-<category label="BrentProost (Brent Proost)"/>
 
 </categories>
 <dataset seriesName="3">
 
-<set value="125"/>
+<set value="3"/>
 
-<set value="9"/>
-
-<set value="0"/>
-
-<set value="6"/>
-
-<set value="9"/>
-
-<set value="24"/>
-
-<set value="24"/>
-
-<set value="24"/>
-
-<set value="29"/>
-
-<set value="6"/>
-
-<set value="1"/>
-
-<set value="6"/>
+<set value="2"/>
 
 </dataset>
 <PP_Internal>

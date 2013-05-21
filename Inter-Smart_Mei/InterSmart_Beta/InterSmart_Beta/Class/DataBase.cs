@@ -16,6 +16,8 @@ namespace InterSmart_Beta.Class
         static ObservableCollection<Tweet> _tweets = new ObservableCollection<Tweet>();
         SQLiteConnection m_dbConnection; //Holds our connection with the database
         public List<double> procenten = new List<double>();
+        private List<string> resultatenLijst = new List<string>();
+        public List<int> AnswerList = new List<int>();
         #endregion 
 
 
@@ -234,33 +236,18 @@ namespace InterSmart_Beta.Class
                             }
                             break;
                         default:
-                            System.Console.WriteLine("een van de antwoorden voldoet niet aan de standaard. Den " + t.Author.Name.ToString() + " snapt het ni zo goe !" );
+                            System.Console.WriteLine("een van de antwoorden voldoet niet aan de standaard --> " + t.Author.Name.ToString());
                             break;
                     }
                     #endregion
 
-                   
-
                 }
              
-               
             }
         }
         #endregion
 
-        public void printUsers()
-        {     
-            string UserTable = "select * from User order by ID desc"; //asc of desc hoog-->laag
-            SQLiteCommand command2 = new SQLiteCommand(UserTable, m_dbConnection);
-            SQLiteDataReader reader2 = command2.ExecuteReader();
-            Console.WriteLine("Dit is de database tabel voor de user");
-            while (reader2.Read())
-            {
-                Console.WriteLine("Name: " + reader2["name"] + "\nID: " + reader2["ID"]);
-            }
-            Console.ReadLine();
-        }
-
+     
         public void OomfoCharts()
         {
             #region Variable
@@ -362,13 +349,14 @@ namespace InterSmart_Beta.Class
                 #endregion 
         }
 
-        public void StatistiekenInDBOpslaan()
+        public void StatistiekenInDBOpslaan() //totaal statistieken voor eind resultaat
         {
             string filename = Path.GetFileNameWithoutExtension(Program.file);
             double totaal = 0;
             double juist = 0;
             double procent = 0;
-            int antwoorden = Program.Antwoorden.Count() +1;
+            int antwoorden = Program.Antwoorden.Count() +1;// +1 omdat het array is
+
             List<string> lijstProcenten = new List<string>();
             List<string> lijstVragen = new List<string>();
             System.IO.StreamWriter file2 = new System.IO.StreamWriter("OomfoStatistieken.txt");
@@ -390,16 +378,14 @@ namespace InterSmart_Beta.Class
                             totaal++;
                         }
                     }
-                    //Console.WriteLine("vraag" + i.ToString() + ": "+ "totale tweets: "+ totaal + " juist: " + juist.ToString() + " het aantal vragen = " + (antwoorden-1).ToString());
-                    //Console.ReadLine();
-                    // berekening percentage + toevoegen aan lijst
-
                     procent =((juist / totaal)*100);
                     procent = Math.Round(procent);
                     procenten.Add(procent);
                     totaal = 0;
                     juist = 0;
                 }
+
+                #region uitschrijven naar xml 
                 for (int i = 0; i < procenten.Count; i++)
                 {
                     //System.Console.WriteLine("vraag" + (i + 1).ToString() + ": " + procenten[i].ToString() + "% juist");
@@ -426,6 +412,7 @@ namespace InterSmart_Beta.Class
                 lijstProcenten.ForEach(file2.WriteLine);
                 file2.WriteLine(textout2);
                 file2.Close();
+                #endregion 
         }
 
         public bool checklength(int vragen, int antwoord)
@@ -439,6 +426,164 @@ namespace InterSmart_Beta.Class
                 return true;
             }
         }
+
+        public void VraagStatistieken()
+        {
+            System.IO.StreamWriter file3 = new System.IO.StreamWriter("Vraag.txt");
+            int deVraag = Program.intVerder;
+            int A = 0;
+            int B = 0;
+            int C = 0;
+            int D = 0;
+            int totaal = 0;
+            int antwoorden = Program.Antwoorden.Count() + 1;// +1 omdat het array is
+            _tweets = tweet.GetCollection();
+            System.Threading.Thread.Sleep(3000);//3sec w8e anders zaagt em da de collectie veranderd is
+            ObservableCollection<Tweet> _tweetsTijd = new ObservableCollection<Tweet>();
+            string filename = Path.GetFileNameWithoutExtension(Program.file);
+            
+            foreach (var t in _tweets)
+            {
+                DateTime TweetTijd = new DateTime();
+                TweetTijd = Convert.ToDateTime(t.TweetDate);
+                if (TweetTijd > Program.deTijd)
+                {
+                    //variable region niet naar kijken --> vieze code voor t.vraagNr
+                    #region Variable 
+                    string title = t.Title;
+                    title = title.Replace("@Inter_Smart", ""); //@Inter_Smart uit tweets verwijderen
+                    title = title.Replace(" ", "");
+                    title = title.Replace("\n", "");
+                    string UpperCasetitle2 = title.ToUpper(); //Antwoorden in druk letters plaatsen voor score naar array zetten
+                    UpperCasetitle2.ToCharArray();
+                    string nr = "";
+                    int intNr = 1;
+                    char antw = 'z';
+                    try
+                    {
+                        nr = UpperCasetitle2[0].ToString();
+                        intNr = int.Parse(nr);
+                        antw = UpperCasetitle2[1];
+                    }
+                    catch (Exception)
+                    {
+                        intNr = 999;
+                        antw = 'z';
+                        System.Console.WriteLine("typt da is juist !");
+                    }
+                    t.vraagNr = intNr;
+                    #endregion 
+
+                    int count = UpperCasetitle2.Count();
+                    switch (count)
+                    {
+                        case 2:
+                            if (t.vraagNr == deVraag)
+                            {
+                                if (t.Title.Contains("A"))
+                                {
+                                    A += 1;
+                                    totaal += 1;
+                                }
+                                else if (t.Title.Contains("B"))
+                                {
+                                    B += 1;
+                                    totaal += 1;
+                                }
+                                else if (t.Title.Contains("C"))
+                                {
+                                    C += 1;
+                                    totaal += 1;
+                                }
+                                else if (t.Title.Contains("D"))
+                                {
+                                    D += 1;
+                                    totaal += 1;
+                                }
+                            }
+                            break;
+                        case 3:
+                            string nr2 = UpperCasetitle2[1].ToString();
+                            antw = UpperCasetitle2[2];
+                            string nummer = nr + nr2;
+                            int nummerint = 1;
+                            int tussewaarde = 0;
+                            try
+                            {
+                                tussewaarde = Convert.ToInt32(nummer);
+                            }
+                            catch 
+                            {
+                                
+                            }
+                            t.vraagNr = tussewaarde;
+                            try
+                            {
+                                nummerint = int.Parse(nummer);
+                                //System.Console.WriteLine(nummerint);
+                                //System.Console.ReadLine();
+                            }
+                            catch (Exception)
+
+                            {
+                                //System.Console.WriteLine(nummer);
+                                //System.Console.ReadLine();
+                            }
+                            if (t.vraagNr == deVraag)
+                            {
+                                if (t.Title.Contains("A"))
+                                {
+                                    A += 1;
+                                    totaal += 1;
+                                }
+                                else if (t.Title.Contains("B"))
+                                {
+                                    B += 1;
+                                    totaal += 1;
+                                }
+                                else if (t.Title.Contains("C"))
+                                {
+                                    C += 1;
+                                    totaal += 1;
+                                }
+                                else if (t.Title.Contains("D"))
+                                {
+                                    D += 1;
+                                    totaal += 1;
+                                }
+                            }
+
+                            break;
+                    }
+                }
+                
+            }
+            resultatenLijst.Add(Environment.NewLine + "<set value=" + "\"" + A.ToString() + "\"" + "/>");
+            resultatenLijst.Add(Environment.NewLine + "<set value=" + "\"" + B.ToString() + "\"" + "/>");
+            resultatenLijst.Add(Environment.NewLine + "<set value=" + "\"" + C.ToString() + "\"" + "/>");
+            resultatenLijst.Add(Environment.NewLine + "<set value=" + "\"" + D.ToString() + "\"" + "/>");
+            #region uitschrijven naar xml
+            string textout = "";
+            textout = "<?xml version=" + "\"1.0\"" + " encoding=" + "\"UTF-16\"" + " standalone=" + "\"yes\"" + "?>"
+                + Environment.NewLine + "<chart caption=" + "\"Statistieken van vraag: "+ Program.intVerder.ToString() +"\"" + " subcaption=" + "\"" + filename + "\"" + " animation=" + "\"1\"" + " xaxisname=" + "\"Gestelde vragen\"" + " yaxisname=" + "\"Aantal\"" + ">"
+                + Environment.NewLine + "<categories>";
+            string textout2 = "";
+            textout2 = "<category label=" + "\"" + "A" + "\"" + "/>" + Environment.NewLine + "<category label=" + "\"" + "B" + "\"" + "/>" + Environment.NewLine + "<category label=" + "\"" + "C" + "\"" + "/>" + Environment.NewLine + "<category label=" + "\"" + "D" + "\"" + "/>" + Environment.NewLine + "</categories>" + Environment.NewLine + "<dataset seriesName=" + "\"Antwoorden van deelnemers\"" + ">";
+            string textout3 = "";
+            textout3 = Environment.NewLine + "</dataset>"
+                + Environment.NewLine + "<PP_Internal>"
+                + Environment.NewLine + "<chart animation=" + "\"1\"" + " themename=" + "\"Custom\"" + "/>"
+                + Environment.NewLine + "</PP_Internal>"
+                + Environment.NewLine + "</chart>";
+            file3.WriteLine(textout.ToString());
+            file3.WriteLine(textout2.ToString());
+            resultatenLijst.ForEach(file3.WriteLine);
+            file3.WriteLine(textout3.ToString());
+            file3.Close();
+            #endregion 
+        }
+       
+    
        
     }
 }
