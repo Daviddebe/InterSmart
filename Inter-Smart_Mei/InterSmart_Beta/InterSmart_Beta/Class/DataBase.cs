@@ -20,7 +20,6 @@ namespace InterSmart_Beta.Class
         public List<int> AnswerList = new List<int>();
         #endregion 
 
-
         public void Uitvoeren()
         {
             connectToDatabase();
@@ -261,7 +260,7 @@ namespace InterSmart_Beta.Class
             int totaalscore = 0;
             List<String> dataset = new List<string>();
             List<String> dataset2 = new List<string>();
-            System.IO.StreamWriter file = new System.IO.StreamWriter("OomfoScores.txt");
+            System.IO.StreamWriter file = new System.IO.StreamWriter("TotalScore.txt");
             #endregion 
 
             #region ID van momenteel geopende presentatie nemen
@@ -359,7 +358,7 @@ namespace InterSmart_Beta.Class
 
             List<string> lijstProcenten = new List<string>();
             List<string> lijstVragen = new List<string>();
-            System.IO.StreamWriter file2 = new System.IO.StreamWriter("OomfoStatistieken.txt");
+            System.IO.StreamWriter file2 = new System.IO.StreamWriter("OverviewQuestionsStats.txt");
 
                 for (int i = 1; i < antwoorden; i++)
                 {
@@ -429,19 +428,23 @@ namespace InterSmart_Beta.Class
 
         public void VraagStatistieken()
         {
-            System.IO.StreamWriter file3 = new System.IO.StreamWriter("Vraag.txt");
+            #region Variable 
+            _tweets = tweet.GetCollection();
             int deVraag = Program.intVerder;
+            string xmlfile = "Question"+ deVraag.ToString()+ ".txt";
+            System.IO.StreamWriter file3 = new System.IO.StreamWriter(xmlfile);
             int A = 0;
             int B = 0;
             int C = 0;
             int D = 0;
             int totaal = 0;
             int antwoorden = Program.Antwoorden.Count() + 1;// +1 omdat het array is
-            _tweets = tweet.GetCollection();
             System.Threading.Thread.Sleep(3000);//3sec w8e anders zaagt em da de collectie veranderd is
-            ObservableCollection<Tweet> _tweetsTijd = new ObservableCollection<Tweet>();
             string filename = Path.GetFileNameWithoutExtension(Program.file);
-            
+            ObservableCollection<Tweet> _tweetsTijd = new ObservableCollection<Tweet>();
+            #endregion 
+
+            #region berekenen statistieken per vraag 
             foreach (var t in _tweets)
             {
                 DateTime TweetTijd = new DateTime();
@@ -562,6 +565,8 @@ namespace InterSmart_Beta.Class
             resultatenLijst.Add(Environment.NewLine + "<set value=" + "\"" + B.ToString() + "\"" + "/>");
             resultatenLijst.Add(Environment.NewLine + "<set value=" + "\"" + C.ToString() + "\"" + "/>");
             resultatenLijst.Add(Environment.NewLine + "<set value=" + "\"" + D.ToString() + "\"" + "/>");
+            #endregion 
+
             #region uitschrijven naar xml
             string textout = "";
             textout = "<?xml version=" + "\"1.0\"" + " encoding=" + "\"UTF-16\"" + " standalone=" + "\"yes\"" + "?>"
@@ -579,6 +584,7 @@ namespace InterSmart_Beta.Class
             file3.WriteLine(textout2.ToString());
             resultatenLijst.ForEach(file3.WriteLine);
             file3.WriteLine(textout3.ToString());
+            resultatenLijst.Clear();
             file3.Close();
             #endregion 
         }

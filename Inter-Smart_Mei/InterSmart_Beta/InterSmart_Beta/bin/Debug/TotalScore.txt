@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<chart caption="Score" subcaption="InterSmart Demo Quiz33" animation="1" xaxisname="Deelnemers" yaxisname="Aantal">
+<categories>
+
+<category label="DeBeuckelaerDav (De Beuckelaer David)"/>
+
+</categories>
+<dataset seriesName="2">
+
+<set value="1"/>
+
+</dataset>
+<PP_Internal>
+<chart animation="1" themename="Custom"/>
+</PP_Internal>
+</chart>

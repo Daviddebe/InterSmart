@@ -30,8 +30,8 @@ namespace InterSmart_Beta
             #region internetconnectie testen
             if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable().ToString() == "False") //internet connectie nakijken
             {
-                Console.WriteLine("Er is geen internet, kijk u connectie na !");
-                Console.WriteLine("(Druk ENTER om de applicatie af te sluiten)");
+                Console.WriteLine("There is no internet, check your connection.");
+                Console.WriteLine("(Press ENTER to exit.)");
                 Console.ReadLine();
                 Environment.Exit(0);
             }
@@ -42,8 +42,8 @@ namespace InterSmart_Beta
             {
                 file = args[0];
             }
-            Console.WriteLine("Welkom bij InterSmart ! Geopende Presentatie -->" + Path.GetFileNameWithoutExtension(Program.file));
-            Console.WriteLine("Geef de antwoorden van de vragen in :");
+            Console.WriteLine("Welcome to InterSmart ! Current presentation -->" + Path.GetFileNameWithoutExtension(Program.file));
+            Console.WriteLine("Insert the correct answers of the questions:");
             string iets = Console.ReadLine();
             Antwoorden = iets.ToUpper();
             Antwoorden.ToCharArray();
@@ -52,69 +52,94 @@ namespace InterSmart_Beta
             #region Internetconnectie nakijken
             if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable().ToString() == "False") //internet connectie nakijken
             {
-                Console.WriteLine("Geen verbinding met het internet");
-                Console.WriteLine("Kijk u connectie na, als deze hersteld is drukt u op \"ENTER\"");
+                Console.WriteLine("No Internet connection!");
+                Console.WriteLine("Check your connection, and if it is repaired press \"ENTER\"");
                 Console.ReadLine();
                 while (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable().ToString() == "False") //internet connectie terug 
                 {
-                    Console.WriteLine("Nog steeds geen connectie, probeer nogmaals");
+                    Console.WriteLine("Still no connection, try again");
                     Console.ReadLine();
                 }
-                Console.WriteLine("Verbinding is in orde, de tweets worden nu binnengehaalt");
+                Console.WriteLine("Connection is back, system will continue progress. ");
             }
             #endregion
 
-            Console.WriteLine("Geef nummer in van de vraag waar u tussenresultaten van wild bekijken");
-            intVerder = int.Parse(Console.ReadLine());
-
-            if (intVerder > 0)
+            Console.WriteLine("The quiz has started!");
+            Console.WriteLine("1. Show statistics for a single question");
+            Console.WriteLine("2. Show total score and statistics");
+            Console.WriteLine("3. Quit");
+            int verder = 99;
+            while (verder != 0)
             {
-                DeDataBase.VraagStatistieken();
+                verder = int.Parse(Console.ReadLine());
+                switch (verder)
+                {
+                    case 1:
+
+                        #region Internetconnectie nakijken
+                        if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable().ToString() == "False") //internet connectie nakijken
+                        {
+                            Console.WriteLine("No Internet connection!");
+                            Console.WriteLine("Check your connection, and if it is repaired press \"ENTER\"");
+                            Console.ReadLine();
+                            while (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable().ToString() == "False") //internet connectie terug 
+                            {
+                                Console.WriteLine("Still no connection, try again");
+                                Console.ReadLine();
+                            }
+                            Console.WriteLine("Connection is back, system will continue progress. ");
+                        }
+                        #endregion
+
+                        Console.WriteLine("Input question number:");
+                        intVerder = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Please wait...");
+                        DeDataBase.VraagStatistieken();
+                        Console.WriteLine("Statistics have been made");
+                        Console.WriteLine("1. Show statistics for a single question");
+                        Console.WriteLine("2. Show total score and statistics");
+                        Console.WriteLine("3. Quit");
+                        break;
+
+                    case 2:
+
+                        #region Internetconnectie nakijken
+                        if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable().ToString() == "False") //internet connectie nakijken
+                        {
+                            Console.WriteLine("No Internet connection!");
+                            Console.WriteLine("Check your connection, and if it is repaired press \"ENTER\"");
+                            Console.ReadLine();
+                            while (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable().ToString() == "False") //internet connectie terug 
+                            {
+                                Console.WriteLine("Still no connection, try again");
+                                Console.ReadLine();
+                            }
+                            Console.WriteLine("Connection is back, system will continue progress. ");
+                        }
+                        #endregion
+
+                        Console.WriteLine("Please wait...");
+                        DeDataBase.Uitvoeren();
+                        DeDataBase.VullenDataBase();
+                        DeDataBase.OomfoCharts();
+                        Console.WriteLine("Total score completed!");
+                        DeDataBase.StatistiekenInDBOpslaan();
+                        Console.WriteLine("Overview statistics are completed!");
+                        Console.WriteLine("Presentation has ended, press ENTER to close InterSmart.");
+                        Console.ReadLine();
+                        Environment.Exit(0);
+                        break;
+
+                    case 3:
+                        Environment.Exit(0);
+                        break;
+
+                    default:
+                        Console.WriteLine("Sorry, invalid selection");
+                        break;
+                }
             }
-            Console.WriteLine("aangemaakt: type go en druk enter voor eindresultaten");
-            string verder = "";
-            verder = Console.ReadLine();
-            if (verder == "go") //totaal eindresultaat
-            {
-                DeDataBase.Uitvoeren();
-                DeDataBase.VullenDataBase();
-                DeDataBase.OomfoCharts();
-                Console.WriteLine("Scores zijn succesvol ingeladen ! (druk ENTER voor statistieken in te laden)");
-                Console.ReadLine();
-                DeDataBase.StatistiekenInDBOpslaan();
-                Console.WriteLine("Statistieken inladen is een succes !");
-                Console.ReadLine();
-                // DeDataBase.printUsers();
-            }
-
-        //start:
-        //    _tweets = tweet.show();
-        //    weergeven();
-        //    if (_tweets.Count() <= 0)
-        //    {
-        //        goto start;
-        //    }
-        //    else
-        //    {
-        //        //DataProg.print();
-        //        //DataProg.OomfoChart();
-        //    }
-
-        //    Console.WriteLine("Press \'q\' to quit the sample.");
-        //    while (Console.Read() != 'q') ;
-
         }
-
-        public static void weergeven()
-        {
-            Console.WriteLine("De tweets");
-            System.Threading.Thread.Sleep(3000);
-            foreach (var t in _tweets)
-            {
-              //  Console.WriteLine(t.Title + _tweets.Count.ToString());
-            }
-        } //tweets weergeven op console
-
     }
 }
 

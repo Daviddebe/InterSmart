@@ -73,7 +73,7 @@ namespace InterSmart_Beta.Class
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Nog steeds geen internet, de applicatie wordt gesloten");
+                    Console.WriteLine("Still no internet, application will close down!");
                     Console.ReadLine();
                     Environment.Exit(0);
                 }
