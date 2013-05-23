@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<chart caption="Statistieken van vraag: 2" subcaption="InterSmart Demo Quiz54" animation="1" xaxisname="Gestelde vragen" yaxisname="Aantal">
+<categories>
+<category label="A"/>
+<category label="B"/>
+<category label="C"/>
+<category label="D"/>
+</categories>
+<dataset seriesName="Antwoorden van deelnemers">
+
+<set value="1"/>
+
+<set value="0"/>
+
+<set value="0"/>
+
+<set value="1"/>
+
+</dataset>
+<PP_Internal>
+<chart animation="1" themename="Custom"/>
+</PP_Internal>
+</chart>
