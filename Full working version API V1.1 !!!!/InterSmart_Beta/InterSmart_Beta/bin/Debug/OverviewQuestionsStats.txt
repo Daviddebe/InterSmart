@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<chart caption="Statistieken" subcaption="InterSmart Demo Quiz85" animation="1" xaxisname="Gestelde vragen" yaxisname="Aantal">
+<categories>
+
+<category label="Vraag1"/>
+
+<category label="Vraag2"/>
+
+<category label="Vraag3"/>
+
+<category label="Vraag4"/>
+
+<category label="Vraag5"/>
+
+</categories>
+<dataset seriesName="Aantal % juist geantwoord">
+
+<set value="NaN (geen getal)"/>
+
+<set value="NaN (geen getal)"/>
+
+<set value="NaN (geen getal)"/>
+
+<set value="NaN (geen getal)"/>
+
+<set value="50"/>
+
+</dataset>
+<PP_Internal>
+<chart animation="1" themename="Custom"/>
+</PP_Internal>
+</chart>

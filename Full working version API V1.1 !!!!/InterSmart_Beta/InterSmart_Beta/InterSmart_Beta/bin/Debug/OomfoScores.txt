@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<chart caption="Score" subcaption="" animation="1" xaxisname="Deelnemers" yaxisname="Aantal">
+<categories>
+
+</categories>
+<dataset seriesName="Score op 10">
+
+</dataset>
+<PP_Internal>
+<chart animation="1" themename="Custom"/>
+</PP_Internal>
+</chart>

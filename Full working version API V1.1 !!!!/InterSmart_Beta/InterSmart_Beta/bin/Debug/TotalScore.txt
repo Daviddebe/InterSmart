@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<chart caption="Score" subcaption="InterSmart Demo Quiz85" animation="1" xaxisname="Deelnemers" yaxisname="Aantal">
+<categories>
+
+<category label="DeBeuckelaerDav"/>
+
+<category label="DennVorsselmans"/>
+
+</categories>
+<dataset seriesName="5">
+
+<set value="1"/>
+
+<set value="0"/>
+
+</dataset>
+<PP_Internal>
+<chart animation="1" themename="Custom"/>
+</PP_Internal>
+</chart>
